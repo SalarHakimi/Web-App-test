@@ -3,233 +3,306 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyRush Skydiving | Leap Into the Sky</title>
+  <title>SkyRush — Leap Into the Sky</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
+  <!-- SCROLL SKYDIVER -->
+  <div id="scrollDiver" aria-hidden="true">
+    <svg id="diverSVG" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- Parachute (hidden until deployed) -->
+      <g id="chute" opacity="0">
+        <ellipse cx="40" cy="18" rx="32" ry="18" fill="#7c3aed" opacity="0.9"/>
+        <ellipse cx="40" cy="18" rx="32" ry="18" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+        <!-- panels -->
+        <line x1="40" y1="36" x2="20" y2="64" stroke="#a78bfa" stroke-width="0.8" opacity="0.6"/>
+        <line x1="40" y1="36" x2="30" y2="64" stroke="#a78bfa" stroke-width="0.8" opacity="0.6"/>
+        <line x1="40" y1="36" x2="40" y2="64" stroke="#a78bfa" stroke-width="0.8" opacity="0.6"/>
+        <line x1="40" y1="36" x2="50" y2="64" stroke="#a78bfa" stroke-width="0.8" opacity="0.6"/>
+        <line x1="40" y1="36" x2="60" y2="64" stroke="#a78bfa" stroke-width="0.8" opacity="0.6"/>
+      </g>
+      <!-- Body -->
+      <g id="freefallBody">
+        <!-- jumpsuit body -->
+        <rect x="33" y="55" width="14" height="28" rx="5" fill="#7c3aed"/>
+        <!-- head -->
+        <circle cx="40" cy="48" r="8" fill="#f5c5a3"/>
+        <!-- helmet -->
+        <path d="M32 47 Q40 36 48 47" fill="#5b21b6" stroke="#7c3aed" stroke-width="1"/>
+        <!-- goggles -->
+        <rect x="34" y="46" width="5" height="3.5" rx="1.5" fill="#1a1a2e" stroke="#a78bfa" stroke-width="0.8"/>
+        <rect x="41" y="46" width="5" height="3.5" rx="1.5" fill="#1a1a2e" stroke="#a78bfa" stroke-width="0.8"/>
+        <!-- left arm spread -->
+        <path d="M33 62 Q22 58 14 62" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <!-- right arm spread -->
+        <path d="M47 62 Q58 58 66 62" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <!-- left leg -->
+        <path d="M36 83 Q32 95 30 100" stroke="#5b21b6" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <!-- right leg -->
+        <path d="M44 83 Q48 95 50 100" stroke="#5b21b6" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <!-- gloves -->
+        <circle cx="14" cy="63" r="4" fill="#5b21b6"/>
+        <circle cx="66" cy="63" r="4" fill="#5b21b6"/>
+        <!-- boots -->
+        <ellipse cx="30" cy="102" rx="5" ry="3.5" fill="#1a1a2e"/>
+        <ellipse cx="50" cy="102" rx="5" ry="3.5" fill="#1a1a2e"/>
+      </g>
+      <!-- Speed lines -->
+      <g id="speedLines" opacity="0.4">
+        <line x1="5" y1="40" x2="5" y2="70" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4 6"/>
+        <line x1="75" y1="35" x2="75" y2="65" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4 6"/>
+        <line x1="12" y1="50" x2="12" y2="72" stroke="#7c3aed" stroke-width="0.8" stroke-dasharray="3 8"/>
+        <line x1="68" y1="45" x2="68" y2="67" stroke="#7c3aed" stroke-width="0.8" stroke-dasharray="3 8"/>
+      </g>
+    </svg>
+  </div>
+
   <!-- NAV -->
   <nav id="navbar">
-    <div class="nav-logo">SKY<span>RUSH</span></div>
+    <div class="nav-logo">Sky<span>Rush</span></div>
     <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#packages">Packages</a></li>
       <li><a href="#simulator">Simulator</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#testimonials">Stories</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="nav-cta" onclick="openBooking()">Book Now</button>
-    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+    <button class="nav-cta" onclick="openBooking()">Book a Jump</button>
+    <button class="hamburger" id="hamburger">&#9776;</button>
   </nav>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-mobile" onclick="closeMobileMenu()">&#10005;</button>
     <ul>
-      <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
+      <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
       <li><a href="#packages" onclick="closeMobileMenu()">Packages</a></li>
       <li><a href="#simulator" onclick="closeMobileMenu()">Simulator</a></li>
       <li><a href="#gallery" onclick="closeMobileMenu()">Gallery</a></li>
       <li><a href="#testimonials" onclick="closeMobileMenu()">Stories</a></li>
-      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
-      <li><button onclick="openBooking(); closeMobileMenu()">Book Now</button></li>
+      <li><button onclick="openBooking(); closeMobileMenu()">Book a Jump</button></li>
     </ul>
   </div>
 
   <!-- HERO -->
   <section id="hero">
-    <canvas id="skyCanvas"></canvas>
-    <div class="hero-content">
-      <p class="hero-tagline">THE ULTIMATE RUSH</p>
-      <h1 class="hero-title">LEAP INTO<br/>THE SKY</h1>
-      <p class="hero-sub">Experience freefall from 15,000 ft at 120 mph — pure, unfiltered freedom.</p>
-      <div class="hero-buttons">
-        <button class="btn-primary pulse" onclick="openBooking()">Book Your Jump</button>
-        <button class="btn-secondary" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'})">Try the Simulator</button>
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-inner">
+      <p class="eyebrow">The Ultimate Freefall Experience</p>
+      <h1>Leap Into<br/><em>the Sky</em></h1>
+      <p class="hero-desc">15,000 feet. 120 mph. 60 seconds of pure, unfiltered freedom. No words prepare you for what comes next.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openBooking()">Book Your Jump</button>
+        <button class="btn-ghost" onclick="scrollTo('#about')">Learn More &darr;</button>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num" data-target="15000">0</span><span>ft</span><p>Jump Altitude</p></div>
-      <div class="stat"><span class="stat-num" data-target="120">0</span><span>mph</span><p>Freefall Speed</p></div>
-      <div class="stat"><span class="stat-num" data-target="50000">0</span><span>+</span><p>Jumps Completed</p></div>
-      <div class="stat"><span class="stat-num" data-target="99">0</span><span>%</span><p>Would Jump Again</p></div>
+    <div class="hero-scroll-hint">Scroll to fall</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <p class="eyebrow">About SkyRush</p>
+      <h2>Meet Your <em>Drop Zone</em></h2>
+      <p class="about-body">With over 50,000 successful jumps and a perfect safety record, SkyRush has been the DMV region's premier tandem skydiving experience since 2008. Our certified instructors bring sharp skill, calm energy, and a deep love for the sky to every single jump.</p>
+      <button class="btn-primary" onclick="scrollTo('#packages')">See Packages &rarr;</button>
     </div>
-    <div class="scroll-indicator">
-      <span></span>
+    <div class="about-cards">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </div>
+        <h4>Certified Instructors</h4>
+        <p>Every instructor holds a USPA Tandem rating with 1,000+ jumps logged. Your safety is non-negotiable.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h4>Safety First</h4>
+        <p>Dual-parachute systems, AAD devices on every rig, and rigorous pre-jump inspections on every jump day.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        </div>
+        <h4>HD Media</h4>
+        <p>Capture every second — wrist-mounted cameras, outside videographers, and 50+ photo packages available.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h4>What You Get</h4>
+        <p>Ground training, gear fitting, aircraft ascent, freefall, canopy glide, and a story you'll tell for the rest of your life.</p>
+      </div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header">
-      <p class="section-tag">WHAT TO EXPECT</p>
-      <h2>Your Journey to the Edge</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item" data-step="1">
-        <div class="timeline-icon">&#9992;</div>
-        <div class="timeline-content">
-          <h3>Ground Training</h3>
-          <p>45 minutes with a certified instructor. Learn body position, emergency procedures, and what to expect during freefall.</p>
-          <span class="timeline-time">45 min</span>
-        </div>
-      </div>
-      <div class="timeline-item" data-step="2">
-        <div class="timeline-icon">&#127760;</div>
-        <div class="timeline-content">
-          <h3>Gear Up & Ascent</h3>
-          <p>Suit up in your tandem harness and board the aircraft. Climb to 15,000 ft while taking in breathtaking panoramic views.</p>
-          <span class="timeline-time">20 min</span>
-        </div>
-      </div>
-      <div class="timeline-item" data-step="3">
-        <div class="timeline-icon">&#128293;</div>
-        <div class="timeline-content">
-          <h3>The Door Opens</h3>
-          <p>Heart pounding. Wind roaring. The door opens. This is the moment everything changes. Your instructor guides you to the edge.</p>
-          <span class="timeline-time">The moment</span>
-        </div>
-      </div>
-      <div class="timeline-item" data-step="4">
-        <div class="timeline-icon">&#127774;</div>
-        <div class="timeline-content">
-          <h3>Freefall — 60 Seconds of Pure Bliss</h3>
-          <p>60 seconds of 120 mph adrenaline. No words can describe it. The earth rushing toward you, the sky vast above — you're flying.</p>
-          <span class="timeline-time">60 sec</span>
-        </div>
-      </div>
-      <div class="timeline-item" data-step="5">
-        <div class="timeline-icon">&#127776;</div>
-        <div class="timeline-content">
-          <h3>Canopy & Landing</h3>
-          <p>Parachute deploys at 5,000 ft. Float peacefully for 5–7 minutes, steering the canopy and soaking in the silence above the world.</p>
-          <span class="timeline-time">5–7 min</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="stat-item"><span class="stat-num" data-target="15000">0</span><span class="stat-unit">ft</span><p>Jump Altitude</p></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num" data-target="120">0</span><span class="stat-unit">mph</span><p>Terminal Velocity</p></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num" data-target="50000">0</span><span class="stat-unit">+</span><p>Jumps Completed</p></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num" data-target="99">0</span><span class="stat-unit">%</span><p>Would Jump Again</p></div>
+  </div>
 
   <!-- PACKAGES -->
   <section id="packages">
     <div class="section-header">
-      <p class="section-tag">CHOOSE YOUR ADVENTURE</p>
-      <h2>Jump Packages</h2>
+      <p class="eyebrow">Choose Your Adventure</p>
+      <h2>Jump <em>Packages</em></h2>
     </div>
     <div class="packages-grid">
-      <div class="package-card" data-package="intro">
-        <div class="package-badge">Most Popular</div>
-        <div class="package-altitude">10,000 ft</div>
-        <h3>Intro Jump</h3>
-        <p class="package-price">$199</p>
-        <ul class="package-features">
-          <li>&#10003; Tandem with certified instructor</li>
-          <li>&#10003; 30-second freefall</li>
-          <li>&#10003; Ground training included</li>
-          <li>&#10003; Safe landing assistance</li>
-          <li class="disabled">&#10007; Video footage</li>
-          <li class="disabled">&#10007; Photo package</li>
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">Entry</span>
+          <h3>Intro Jump</h3>
+          <div class="pkg-alt">10,000 <span>ft</span></div>
+        </div>
+        <p class="pkg-price">$199</p>
+        <ul class="pkg-list">
+          <li>Tandem with certified instructor</li>
+          <li>30-second freefall</li>
+          <li>Full ground training</li>
+          <li>Landing assistance</li>
         </ul>
-        <button class="btn-primary" onclick="selectPackage('Intro Jump', 199)">Select Package</button>
+        <div class="pkg-unavail">Video &amp; Photos not included</div>
+        <button class="btn-outline" onclick="selectPackage('Intro Jump', 199)">Select &rarr;</button>
       </div>
-      <div class="package-card featured" data-package="ultimate">
-        <div class="package-badge">Best Value</div>
-        <div class="package-altitude">15,000 ft</div>
-        <h3>Ultimate Rush</h3>
-        <p class="package-price">$349</p>
-        <ul class="package-features">
-          <li>&#10003; Tandem with certified instructor</li>
-          <li>&#10003; 60-second freefall</li>
-          <li>&#10003; Ground training included</li>
-          <li>&#10003; Safe landing assistance</li>
-          <li>&#10003; HD video footage</li>
-          <li>&#10003; 50+ photo package</li>
-        </ul>
-        <button class="btn-primary" onclick="selectPackage('Ultimate Rush', 349)">Select Package</button>
-      </div>
-      <div class="package-card" data-package="vip">
-        <div class="package-badge">Premium</div>
-        <div class="package-altitude">18,000 ft</div>
-        <h3>VIP Skydiver</h3>
-        <p class="package-price">$549</p>
-        <ul class="package-features">
-          <li>&#10003; Private instructor</li>
-          <li>&#10003; 75-second freefall</li>
-          <li>&#10003; Private ground training</li>
-          <li>&#10003; Priority boarding</li>
-          <li>&#10003; 4K cinematic video</li>
-          <li>&#10003; Unlimited photo package</li>
-        </ul>
-        <button class="btn-primary" onclick="selectPackage('VIP Skydiver', 549)">Select Package</button>
-      </div>
-    </div>
 
-    <!-- ALTITUDE COMPARISON -->
-    <div class="altitude-viz">
-      <h3>Altitude Comparison</h3>
-      <div class="altitude-bars">
-        <div class="alt-bar-wrap">
-          <div class="alt-bar" style="--target-h: 55%" data-label="10,000 ft"></div>
-          <p>Intro</p>
+      <div class="pkg-card featured">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-top">
+          <span class="pkg-tag">Signature</span>
+          <h3>Ultimate Rush</h3>
+          <div class="pkg-alt">15,000 <span>ft</span></div>
         </div>
-        <div class="alt-bar-wrap">
-          <div class="alt-bar" style="--target-h: 83%" data-label="15,000 ft"></div>
-          <p>Ultimate</p>
-        </div>
-        <div class="alt-bar-wrap">
-          <div class="alt-bar" style="--target-h: 100%" data-label="18,000 ft"></div>
-          <p>VIP</p>
-        </div>
+        <p class="pkg-price">$349</p>
+        <ul class="pkg-list">
+          <li>Tandem with certified instructor</li>
+          <li>60-second freefall</li>
+          <li>Full ground training</li>
+          <li>Landing assistance</li>
+          <li>HD video footage</li>
+          <li>50+ photo package</li>
+        </ul>
+        <button class="btn-primary" onclick="selectPackage('Ultimate Rush', 349)">Select &rarr;</button>
       </div>
-      <div class="altitude-scale">
-        <span>Ground</span>
-        <span>Mt. Everest base camp ~17,600 ft</span>
-        <span>18,000 ft</span>
+
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <span class="pkg-tag">Premium</span>
+          <h3>VIP Skydiver</h3>
+          <div class="pkg-alt">18,000 <span>ft</span></div>
+        </div>
+        <p class="pkg-price">$549</p>
+        <ul class="pkg-list">
+          <li>Private dedicated instructor</li>
+          <li>75-second freefall</li>
+          <li>Private ground training session</li>
+          <li>Priority boarding</li>
+          <li>4K cinematic video</li>
+          <li>Unlimited photo package</li>
+        </ul>
+        <button class="btn-outline" onclick="selectPackage('VIP Skydiver', 549)">Select &rarr;</button>
       </div>
     </div>
   </section>
 
-  <!-- FREEFALL SIMULATOR -->
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-header">
+      <p class="eyebrow">Your Jump Day</p>
+      <h2>From Ground to <em>Sky</em></h2>
+    </div>
+    <div class="timeline-wrap">
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-body">
+          <h4>Arrive &amp; Check In</h4>
+          <p>Meet your instructor. Sign your waiver. Get excited. We'll answer every question you have.</p>
+          <span class="tl-time">~15 min</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-body">
+          <h4>Ground Training</h4>
+          <p>Learn body position, hand signals, and what to expect during every phase of the jump.</p>
+          <span class="tl-time">~45 min</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-body">
+          <h4>Suit Up &amp; Ascent</h4>
+          <p>Harness fitted, goggles on. Board the aircraft and climb to altitude while the view gets breathtaking.</p>
+          <span class="tl-time">~20 min</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-body">
+          <h4>Freefall</h4>
+          <p>The door opens. 60 seconds. 120 mph. The most alive you've ever felt in your entire life.</p>
+          <span class="tl-time">60 seconds</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">05</div>
+        <div class="tl-body">
+          <h4>Canopy &amp; Landing</h4>
+          <p>Chute deploys at 5,000 ft. Glide peacefully for 5–7 minutes and land softly in the drop zone.</p>
+          <span class="tl-time">~6 min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULATOR -->
   <section id="simulator">
     <div class="section-header">
-      <p class="section-tag">INTERACTIVE</p>
-      <h2>Freefall Simulator</h2>
-      <p class="section-desc">Experience the rush — adjust your settings and watch the simulation.</p>
+      <p class="eyebrow">Interactive</p>
+      <h2>Freefall <em>Simulator</em></h2>
+      <p class="section-desc">Adjust your jump settings and watch it play out in real time.</p>
     </div>
-    <div class="simulator-wrap">
-      <div class="sim-controls">
+    <div class="sim-wrap">
+      <div class="sim-panel">
         <div class="sim-control">
-          <label>Jump Altitude</label>
+          <label>Altitude</label>
           <input type="range" id="altSlider" min="10000" max="18000" step="1000" value="15000" />
-          <div class="slider-val"><span id="altVal">15,000</span> ft</div>
+          <div class="sim-val"><span id="altVal">15,000</span> ft</div>
         </div>
         <div class="sim-control">
           <label>Body Position</label>
-          <div class="position-btns">
-            <button class="pos-btn active" data-pos="arch" onclick="setPosition(this, 'arch')">Arch (stable)</button>
-            <button class="pos-btn" data-pos="track" onclick="setPosition(this, 'track')">Track (fast)</button>
-            <button class="pos-btn" data-pos="sit" onclick="setPosition(this, 'sit')">Sit Fly</button>
+          <div class="pos-group">
+            <button class="pos-btn active" onclick="setPosition(this,'arch')">Arch</button>
+            <button class="pos-btn" onclick="setPosition(this,'track')">Track</button>
+            <button class="pos-btn" onclick="setPosition(this,'sit')">Sit Fly</button>
           </div>
         </div>
         <div class="sim-control">
-          <label>Wind Speed</label>
+          <label>Wind</label>
           <input type="range" id="windSlider" min="5" max="30" step="1" value="15" />
-          <div class="slider-val"><span id="windVal">15</span> mph</div>
+          <div class="sim-val"><span id="windVal">15</span> mph</div>
         </div>
-        <button class="btn-primary sim-start" id="simBtn" onclick="startSimulation()">&#9654; Start Jump</button>
-        <div class="sim-stats-live">
-          <div class="live-stat"><span id="liveFallTime">0.0</span>s<p>Freefall Time</p></div>
-          <div class="live-stat"><span id="liveSpeed">0</span> mph<p>Current Speed</p></div>
-          <div class="live-stat"><span id="liveAlt">--</span> ft<p>Altitude</p></div>
+        <button class="btn-primary sim-btn" id="simBtn" onclick="startSimulation()">&#9654; Start Jump</button>
+        <div class="sim-live">
+          <div class="live-box"><span id="liveFallTime">0.0</span><p>Seconds</p></div>
+          <div class="live-box"><span id="liveSpeed">0</span><p>mph</p></div>
+          <div class="live-box"><span id="liveAlt">—</span><p>ft alt</p></div>
         </div>
       </div>
-      <div class="sim-viewport">
+      <div class="sim-view">
         <canvas id="simCanvas"></canvas>
-        <div class="sim-overlay" id="simOverlay">
-          <p>Configure your jump and hit Start</p>
-        </div>
+        <div class="sim-overlay" id="simOverlay"><p>Configure your jump and press Start</p></div>
       </div>
     </div>
   </section>
@@ -237,8 +310,8 @@
   <!-- GALLERY -->
   <section id="gallery">
     <div class="section-header">
-      <p class="section-tag">MOMENTS CAPTURED</p>
-      <h2>Gallery</h2>
+      <p class="eyebrow">Moments Captured</p>
+      <h2>The <em>Gallery</em></h2>
     </div>
     <div class="gallery-filter">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -246,15 +319,13 @@
       <button class="filter-btn" data-filter="canopy">Canopy</button>
       <button class="filter-btn" data-filter="landing">Landing</button>
     </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <!-- Gallery items generated by JS -->
-    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
     <div class="lightbox" id="lightbox">
       <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
       <button class="lb-prev" onclick="lightboxNav(-1)">&#8592;</button>
       <div class="lb-content">
-        <div class="lb-img-wrap" id="lbImgWrap"></div>
-        <div class="lb-caption" id="lbCaption"></div>
+        <div class="lb-img" id="lbImg"></div>
+        <p class="lb-cap" id="lbCap"></p>
       </div>
       <button class="lb-next" onclick="lightboxNav(1)">&#8594;</button>
     </div>
@@ -263,50 +334,35 @@
   <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="section-header">
-      <p class="section-tag">TRUE STORIES</p>
-      <h2>What Jumpers Say</h2>
+      <p class="eyebrow">True Stories</p>
+      <h2>What Jumpers <em>Say</em></h2>
     </div>
-    <div class="testimonials-carousel">
+    <div class="testimonials-wrap">
       <div class="testimonials-track" id="testimonialsTrack">
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
           <p>"I was terrified at the door. Then I jumped. In those 60 seconds, every single worry I've ever had just... disappeared. Best decision of my life."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#e74c3c;">S</div>
-            <div><strong>Sarah M.</strong><span>Ultimate Rush Package</span></div>
-          </div>
+          <div class="testi-author"><div class="avatar" style="background:#7c3aed;">S</div><div><strong>Sarah M.</strong><span>Ultimate Rush</span></div></div>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Did the VIP package for my 40th birthday. Private instructor, gorgeous weather, and the 4K video made me cry watching it. Absolutely epic."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#3498db;">J</div>
-            <div><strong>James K.</strong><span>VIP Skydiver Package</span></div>
-          </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Did the VIP package for my 40th birthday. Private instructor, perfect weather, and the 4K video made me cry watching it back. Absolutely epic."</p>
+          <div class="testi-author"><div class="avatar" style="background:#5b21b6;">J</div><div><strong>James K.</strong><span>VIP Skydiver</span></div></div>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"I'm a data scientist and I analyzed the safety record before booking. SkyRush's numbers are impeccable. The team is professional, warm, and extremely safety-focused."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#2ecc71;">A</div>
-            <div><strong>Anika P.</strong><span>Intro Jump Package</span></div>
-          </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"I analyzed the safety record before booking. SkyRush's numbers are impeccable. The team is professional, warm, and extraordinarily safety-focused."</p>
+          <div class="testi-author"><div class="avatar" style="background:#6d28d9;">A</div><div><strong>Anika P.</strong><span>Intro Jump</span></div></div>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Third time jumping with SkyRush. The instructors remember your name, the aircraft is always in top condition, and the views over the mountains are unreal."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#9b59b6;">M</div>
-            <div><strong>Marcus T.</strong><span>3x Repeat Customer</span></div>
-          </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Third time jumping with SkyRush. The instructors remember your name, the aircraft is always pristine, and the mountain views are absolutely unreal."</p>
+          <div class="testi-author"><div class="avatar" style="background:#4c1d95;">M</div><div><strong>Marcus T.</strong><span>3× Repeat Jumper</span></div></div>
         </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"My hands were shaking filling out the waiver. By the time we landed I was already asking about the next date. It's THAT addictive."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#e67e22;">L</div>
-            <div><strong>Layla R.</strong><span>Ultimate Rush Package</span></div>
-          </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"My hands were shaking filling out the waiver. By the time we landed I was already asking about the next available date. It's THAT addictive."</p>
+          <div class="testi-author"><div class="avatar" style="background:#7c3aed;">L</div><div><strong>Layla R.</strong><span>Ultimate Rush</span></div></div>
         </div>
       </div>
       <div class="carousel-controls">
@@ -320,33 +376,29 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="section-header">
-      <p class="section-tag">GOT QUESTIONS?</p>
-      <h2>FAQ</h2>
+      <p class="eyebrow">Questions?</p>
+      <h2>Everything You <em>Need to Know</em></h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Do I need prior experience? <span>+</span></button>
-        <div class="faq-a"><p>Not at all! Tandem skydiving requires zero prior experience. Your certified instructor handles all technical aspects while you simply enjoy the ride. Ground training takes 45 minutes and covers everything you need to know.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Do I need prior experience?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Not at all. Tandem skydiving requires zero experience. Your instructor manages all technical aspects while you simply enjoy the ride. Ground training covers everything in 45 minutes.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What are the weight/age requirements? <span>+</span></button>
-        <div class="faq-a"><p>Jumpers must be at least 18 years old (ID required). Maximum weight is 220 lbs (100 kg) due to equipment limits. There's no strict upper age limit — we've had jumpers in their 80s! Consult your doctor if you have any medical concerns.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>What are the weight and age requirements?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Jumpers must be 18+ (ID required). Maximum weight is 220 lbs due to equipment limits. There's no upper age limit — we've had jumpers in their 80s. Consult your doctor if you have any medical concerns.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">How safe is skydiving? <span>+</span></button>
-        <div class="faq-a"><p>Tandem skydiving has an excellent safety record — roughly 1 fatality per 500,000 jumps. SkyRush maintains a perfect safety record over 50,000+ jumps. All instructors hold USPA Tandem Instructor ratings, and equipment is rigorously inspected before every jump.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>How safe is tandem skydiving?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Tandem skydiving has roughly 1 fatality per 500,000 jumps. SkyRush has a perfect record over 50,000+ jumps. All instructors hold USPA Tandem Instructor ratings, and all rigs are inspected before every jump.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What should I wear? <span>+</span></button>
-        <div class="faq-a"><p>Comfortable, form-fitting clothes suitable for the weather. Wear closed-toe sneakers (no sandals or boots). Avoid baggy clothes that could flap in the wind. We provide jumpsuits, goggles, helmets, and all necessary gear.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>What should I wear?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Comfortable, form-fitting clothes appropriate for the weather. Closed-toe sneakers are required — no boots, sandals, or flip-flops. We provide the jumpsuit, helmet, goggles, and all equipment.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Can I cancel or reschedule? <span>+</span></button>
-        <div class="faq-a"><p>Yes! We offer free rescheduling up to 48 hours before your jump. Cancellations made 7+ days out receive a full refund. Weather cancellations are always rescheduled at no cost — your safety comes first.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">What happens if weather is bad? <span>+</span></button>
-        <div class="faq-a"><p>We monitor conditions closely and make go/no-go calls on the day. Jumps are cancelled if wind exceeds limits, cloud cover is too thick, or visibility is poor. You'll be contacted early and offered a free reschedule. Safety over schedules — always.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Can I cancel or reschedule?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Free rescheduling up to 48 hours before your jump. Full refund for cancellations 7+ days out. Weather cancellations are always rescheduled at no cost. Your safety always comes before the schedule.</p></div>
       </div>
     </div>
   </section>
@@ -354,57 +406,42 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-wrap">
-      <div class="contact-info">
-        <p class="section-tag">GET IN TOUCH</p>
-        <h2>Ready to Leap?</h2>
-        <p>Have questions or want to talk to a real person before booking? We're here for you.</p>
+      <div class="contact-left">
+        <p class="eyebrow">Get in Touch</p>
+        <h2>Ready to <em>Leap?</em></h2>
+        <p>Have questions before you book? We're happy to talk you through it.</p>
         <div class="contact-details">
-          <div class="contact-item">&#128222; <a href="tel:+18005795693">1-800-SKYRUSH</a></div>
-          <div class="contact-item">&#9993; <a href="mailto:hello@skyrush.com">hello@skyrush.com</a></div>
-          <div class="contact-item">&#128205; 1247 Drop Zone Rd, Skydive Valley, CA 93456</div>
-          <div class="contact-item">&#128337; Open Daily: 7am – Sunset</div>
-        </div>
-        <div class="social-links">
-          <a href="#" class="social-btn">IG</a>
-          <a href="#" class="social-btn">YT</a>
-          <a href="#" class="social-btn">FB</a>
-          <a href="#" class="social-btn">TK</a>
+          <div>&#128222; <a href="tel:+18005795693">1-800-SKYRUSH</a></div>
+          <div>&#9993; <a href="mailto:hello@skyrush.com">hello@skyrush.com</a></div>
+          <div>&#128205; 1247 Drop Zone Rd, Skydive Valley, CA 93456</div>
+          <div>&#128337; Open Daily: 7am – Sunset</div>
         </div>
       </div>
       <form class="contact-form" onsubmit="submitContact(event)">
-        <div class="form-group">
+        <div class="form-row">
           <input type="text" placeholder="Your Name" required />
-        </div>
-        <div class="form-group">
           <input type="email" placeholder="Email Address" required />
         </div>
-        <div class="form-group">
-          <input type="tel" placeholder="Phone Number" />
-        </div>
-        <div class="form-group">
-          <select>
-            <option value="" disabled selected>I'm interested in...</option>
-            <option>Intro Jump ($199)</option>
-            <option>Ultimate Rush ($349)</option>
-            <option>VIP Skydiver ($549)</option>
-            <option>Group Booking</option>
-            <option>General Question</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea rows="4" placeholder="Your message..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Send Message</button>
+        <select>
+          <option value="" disabled selected>I'm interested in...</option>
+          <option>Intro Jump ($199)</option>
+          <option>Ultimate Rush ($349)</option>
+          <option>VIP Skydiver ($549)</option>
+          <option>Group Booking</option>
+          <option>General Question</option>
+        </select>
+        <textarea rows="4" placeholder="Your message..."></textarea>
+        <button type="submit" class="btn-primary">Send Message &rarr;</button>
       </form>
     </div>
   </section>
 
   <!-- BOOKING MODAL -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeBookingOnOverlay(event)">
-    <div class="modal" id="bookingModal">
+  <div class="modal-overlay" id="modalOverlay" onclick="closeOnOverlay(event)">
+    <div class="modal">
       <button class="modal-close" onclick="closeBooking()">&#10005;</button>
-      <h2>Book Your Jump</h2>
-      <p class="modal-sub">Fill in your details below and we'll confirm within 24 hours.</p>
+      <p class="eyebrow">Reserve Your Spot</p>
+      <h2>Book a Jump</h2>
       <form onsubmit="submitBooking(event)">
         <div class="form-group">
           <label>Full Name</label>
@@ -426,50 +463,51 @@
             <option value="vip">VIP Skydiver — $549</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Preferred Date</label>
-          <input type="date" id="bookDate" required />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" id="bookDate" required />
+          </div>
+          <div class="form-group">
+            <label>Jumpers</label>
+            <input type="number" id="bookNum" min="1" max="10" value="1" />
+          </div>
         </div>
-        <div class="form-group">
-          <label>Number of Jumpers</label>
-          <input type="number" id="bookNum" min="1" max="10" value="1" />
-        </div>
-        <div class="price-summary" id="priceSummary">
-          <span>Total:</span><strong id="totalPrice">$349</strong>
+        <div class="price-row">
+          <span>Total</span>
+          <strong id="totalPrice">$349</strong>
         </div>
         <button type="submit" class="btn-primary" style="width:100%">Confirm Booking</button>
       </form>
     </div>
   </div>
 
-  <!-- SUCCESS TOAST -->
+  <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
+    <div class="footer-inner">
       <div class="footer-brand">
-        <div class="nav-logo">SKY<span>RUSH</span></div>
+        <div class="nav-logo">Sky<span>Rush</span></div>
         <p>The sky is not the limit — it's just the beginning.</p>
       </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <a href="#experience">Experience</a>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="#about">About</a>
         <a href="#packages">Packages</a>
         <a href="#gallery">Gallery</a>
         <a href="#faq">FAQ</a>
       </div>
-      <div class="footer-links">
-        <h4>Legal</h4>
+      <div class="footer-col">
+        <h5>Legal</h5>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
         <a href="#">Waiver Info</a>
         <a href="#">Safety Record</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 SkyRush Skydiving. All rights reserved. USPA member dropzone.</p>
-    </div>
+    <div class="footer-bottom">&copy; 2026 SkyRush Skydiving — USPA Member Dropzone</div>
   </footer>
 
   <script src="script.js"></script>
